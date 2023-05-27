@@ -22,10 +22,12 @@ $city = strtolower(str_replace("+", "_", $_GET['city']));
 $state = strtolower($_GET['state']);
 $filename = "$city-$state.json";
 
-try {
-    $data = file_get_contents(__DIR__ . '/../data/' . $filename);
-    echo $data;
-} catch (Exception $e) {
+
+$data = @file_get_contents(__DIR__ . '/../data/' . $filename);
+if ($data === FALSE) {
     http_response_code(404);
     exit;
 }
+
+
+echo $data;
