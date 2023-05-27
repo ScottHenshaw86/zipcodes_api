@@ -18,10 +18,9 @@ if (empty($_GET['state'])) {
     exit;
 }
 
-$city = strtolower(str_replace("+", "_", $_GET['city']));
+$city = strtolower(str_replace(" ", "_", $_GET['city']));
 $state = strtolower($_GET['state']);
 $filename = "$city-$state.json";
-
 
 $data = @file_get_contents(__DIR__ . '/../data/' . $filename);
 if ($data === FALSE) {
