@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: http://localhost:80");
 
 if (empty($_GET['api_key']) && $_GET['api_key'] !== getenv("API_KEY")) {
     http_response_code(401);
@@ -21,6 +22,6 @@ $city = strtolower(str_replace("+", "_", $_GET['city']));
 $state = strtolower($_GET['state']);
 $filename = "$city-$state.json";
 
-$data = file_get_contents(__DIR__ . '/../data/' . $filename);
+$data = file_get_contents('../data/' . $filename);
 
 echo $data;
