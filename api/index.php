@@ -1,17 +1,7 @@
 <?php
-$allowedOrigins = [
-    'https://scotthenshaw86.github.io',
-    'http://localhost'
- ];
+ header("Access-Control-Allow-Origin: http://localhost");
 
- $http_origin = "https://scotthenshaw86.github.io";
- if(in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins))
- {
-  $http_origin = $_SERVER['HTTP_ORIGIN'];
- }
- header("Access-Control-Allow-Origin: $http_origin");
-
-if (empty($_GET['api_key']) && $_GET['api_key'] !== getenv("API_KEY")) {
+if (empty($_GET['api_key']) or $_GET['api_key'] !== getenv("API_KEY")) {
     http_response_code(401);
     exit;
 }
