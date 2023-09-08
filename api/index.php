@@ -1,5 +1,5 @@
 <?php
- header("Access-Control-Allow-Origin: http://localhost");
+ header("Access-Control-Allow-Origin: *");
 
 if (empty($_GET['api_key']) or $_GET['api_key'] !== getenv("API_KEY")) {
     http_response_code(401);
